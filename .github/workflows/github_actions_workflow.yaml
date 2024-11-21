@@ -18,6 +18,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.organization=rekhugopal
-            -Dsonar.projectKey=SonarCloudCodeAnalysis
+            -Dsonar.organization=ivan-dela-cruz
+            -Dsonar.projectKey=gmas-sonar-demo
             -Dsonar.python.coverage.reportPaths=coverage.xml
