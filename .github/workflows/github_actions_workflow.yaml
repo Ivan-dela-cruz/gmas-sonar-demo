@@ -38,7 +38,7 @@ jobs:
 
       # 7. Agregar herramientas de .NET al PATH
       - name: Add .NET tools to PATH
-        run: echo "##[add-path]$HOME/.dotnet/tools" >> $GITHUB_ENV
+        run: echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
 
       # 8. Convertir cobertura al formato requerido por SonarCloud
       - name: Convert coverage report to XML
