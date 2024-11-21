@@ -24,7 +24,7 @@ jobs:
 
       # 4. Construir el proyecto
       - name: Build the project
-        run: dotnet build --no-restore
+        run: dotnet build src/BUE.inscriptions.Services.sln --no-restore
 
       # 5. Ejecutar pruebas y generar cobertura
       - name: Run tests and generate coverage
