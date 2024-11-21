@@ -20,7 +20,7 @@ jobs:
 
       # 3. Restaurar dependencias
       - name: Restore dependencies
-        run: dotnet restore BUE.inscriptions.Services.sln
+        run: dotnet restore src/BUE.inscriptions.Services.sln
 
       # 4. Construir el proyecto
       - name: Build the project
