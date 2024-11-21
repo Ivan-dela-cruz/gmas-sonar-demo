@@ -29,7 +29,7 @@ jobs:
       # 5. Ejecutar pruebas y generar cobertura
       - name: Run tests and generate coverage
         run: |
-          dotnet test --no-build --collect:"XPlat Code Coverage" \
+          dotnet test src/BUE.inscriptions.Services.sln --no-build --collect:"XPlat Code Coverage" \
             --results-directory TestResults
 
       # 6. Convertir cobertura al formato requerido por SonarCloud
