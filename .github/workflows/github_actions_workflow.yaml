@@ -16,7 +16,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 7.0  # Cambia según tu versión de .NET
+          dotnet-version: 7.0  # Cambia según la versión de .NET que uses
 
       # 3. Restaurar dependencias
       - name: Restore dependencies
@@ -32,7 +32,15 @@ jobs:
           dotnet test src/BUE.inscriptions.Services.sln --no-build --collect:"XPlat Code Coverage" \
             --results-directory TestResults
 
-      # 6. Convertir cobertura al formato requerido por SonarCloud
+      # 6. Instalar ReportGenerator
+      - name: Install ReportGenerator
+        run: dotnet tool install --global dotnet-reportgenerator-globaltool
+
+      # 7. Agregar herramientas de .NET al PATH
+      - name: Add .NET tools to PATH
+        run: echo "##[add-path]$HOME/.dotnet/tools" >> $GITHUB_ENV
+
+      # 8. Convertir cobertura al formato requerido por SonarCloud
       - name: Convert coverage report to XML
         run: |
           reportgenerator \
@@ -40,7 +48,7 @@ jobs:
             -targetdir:TestResults/CoverageReport \
             -reporttypes:SonarQube
 
-      # 7. Escaneo con SonarCloud
+      # 9. Escaneo con SonarCloud
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
         env:
